@@ -12,19 +12,13 @@ st.title("Car Price Prediction")
 year = st.number_input("Year", min_value=1990, max_value=2025, value=2020)
 engine_size = st.number_input("Engine Size", min_value=0.5, max_value=10.0, value=2.5)
 mileage = st.number_input("Mileage", min_value=0, max_value=2000000, value=15000)
-
-#made it filter the type for the car make
-type_make_map = {make_: df[df['Make'] == make_]['Type'].unique().tolist() for make_ in df['Make'].unique()}
-make_options = df['Make'].unique().tolist()
-
-# menu for car make
+type = st.selectbox("Car Type", type_options)
 make_ = st.selectbox("Car make", make_options)
 
-# once you choose it will only show you cars that were made by that company :)
-type_options = type_make_map.get(make_, [])
+
 
 # menu for car tpe
-type = st.selectbox("Car Type", type_options)
+
 
 #car option
 options_options = df['Options'].unique().tolist()
