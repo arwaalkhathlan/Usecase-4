@@ -24,12 +24,12 @@ def preprocessing(input_features: InputFeatures):
         'Year': input_features.Year,
         'Engine_Size': input_features.Engine_Size,
         'Mileage': input_features.Mileage,
-        'Type_Accent': input_features.Type == 'Accent',
-        'Type_Land Cruiser': input_features.Type == 'LandCruiser',
-        'Make_Hyundai': input_features.Make == 'Hyundai',
-        'Make_Mercedes': input_features.Make == 'Mercedes',
-        'Options_Full': input_features.Options == 'Full',
-        'Options_Standard': input_features.Options == 'Standard'
+        'Type_Accent': input_features.Type,
+        'Type_Land Cruiser': input_features.Type,
+        'Make_Hyundai': input_features.Make,
+        'Make_Mercedes': input_features.Make,
+        'Options_Full': input_features.Options ,
+        'Options_Standard': input_features.Options
     }
 
     # Convert dict to a sorted list
