@@ -10,8 +10,8 @@ def create_item(item: dict):
     return {"item": item}
 
 import joblib
-model = joblib.load('ML/UL/knn_model.joblib')
-scaler = joblib.load('ML/UL/scaler.joblib')
+model = joblib.load('ML/SL/Classification/knn_model.joblib')
+scaler = joblib.load('ML/SL/Classification/scaler.joblib')
 
 from pydantic import BaseModel
 # Define a Pydantic model for input data validation
