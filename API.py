@@ -40,17 +40,15 @@ def preprocessing(input_features: InputFeatures):
 
     return scaled_features
 
-# Home route for a simple GET request
 @app.get("/")
 def read_root():
     return {"message": "Welcome to Tuwaiq Academy"}
 
-# Endpoint to accept a dictionary via GET (for testing purposes)
 @app.get("/items/")
 def create_item(item: dict):
     return {"item": item}
 
-# POST route for model prediction
+
 @app.post("/predict")
 async def predict(input_features: InputFeatures):
 
@@ -59,5 +57,4 @@ async def predict(input_features: InputFeatures):
 
     y_pred = model.predict(data)
 
-    # Return the prediction result
     return {"pred": y_pred.tolist()[0]}
