@@ -1,23 +1,20 @@
 from fastapi import FastAPI, HTTPException
-from pydantic import BaseModel
-import joblib
-import logging
-
-# Initialize FastAPI app
 app = FastAPI()
+# GET request
+@app.get("/")
+def read_root():
+    return {"message": "Welcome to Tuwaiq Academy"}
+# get request
+@app.get("/items/")
+def create_item(item: dict):
+    return {"item": item}
 
-# Set up logging
-logging.basicConfig(level=logging.INFO)
-logger = logging.getLogger(__name__)
+import joblib
+model = joblib.load('ML/UL/knn_model.joblib')
+scaler = joblib.load('ML/UL/scaler.joblib')
 
-try:
-    # Load pre-trained machine learning model and scaler
-    model = joblib.load('ML/Sl/Classification/knn_model.joblib')
-    scaler = joblib.load('ML/Sl/Classification/scaler.joblib')
-except Exception as e:
-    logger.error(f"Error loading model or scaler: {e}")
-    raise HTTPException(status_code=500, detail="Internal Server Error: Model or Scaler Loading Failed")
-
+from pydantic import BaseModel
+# Define a Pydantic model for input data validation
 class InputFeatures(BaseModel):
     Year: int
     Engine_Size: float
@@ -37,14 +34,15 @@ def preprocessing(input_features: InputFeatures):
     'Make_Mercedes': input_features.Make == 'Mercedes',
     'Options_Full': input_features.Options == 'Full',
     'Options_Standard': input_features.Options == 'Standard'
-}
-# Convert dictionary values to a list in the correct order
+    }
+
     features_list = [dict_f[key] for key in sorted(dict_f)]
-# Scale the input features
+
+
     scaled_features = scaler.transform([list(dict_f.values
     ())])
-    return scaled_features
 
+    return scaled_features
 @app.post("/predict")
 async def predict(input_features: InputFeatures):
     data = preprocessing(input_features)
