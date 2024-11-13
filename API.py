@@ -32,12 +32,12 @@ def preprocessing(input_features: InputFeatures):
             'Year': input_features.Year,
             'Engine_Size': input_features.Engine_Size,
             'Mileage': input_features.Mileage,
-            'Type_Accent': 1 if input_features.Type == 'Accent' else 0,
-            'Type_Land Cruiser': 1 if input_features.Type == 'Land Cruiser' else 0,
-            'Make_Hyundai': 1 if input_features.Make == 'Hyundai' else 0,
-            'Make_Mercedes': 1 if input_features.Make == 'Mercedes' else 0,
-            'Options_Full': 1 if input_features.Options == 'Full' else 0,
-            'Options_Standard': 1 if input_features.Options == 'Standard' else 0
+            'Type_Accent': input_features.Type == 'Accent',
+            'Type_Land Cruiser': input_features.Type == 'Land Cruiser',
+            'Make_Hyundai': input_features.Make == 'Hyundai',
+            'Make_Mercedes': input_features.Make == 'Mercedes',
+            'Options_Full': input_features.Options == 'Full',
+            'Options_Standard': input_features.Options == 'Standard'
         }
 
         # Convert dict to a sorted list
