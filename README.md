@@ -36,8 +36,8 @@ usecase-4/
 
 ## Live Deployments
 
-- API Endpoint: [https://usecase-4-api.onrender.com]
-- Streamlit Interface: [https://arwaalkhathlan-usecase-4-car-prices-hle8gb.streamlit.app/]
+- [API Endpoint](https://usecase-4-api.onrender.com)
+- [Streamlit Interface](https://arwaalkhathlan-usecase-4-car-prices-hle8gb.streamlit.app/)
 
 ## How to Use
 
